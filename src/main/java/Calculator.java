@@ -1,4 +1,7 @@
 
+/**
+ * This a calculator class
+ * */
 class Calculator {
 
     Calculator(){

@@ -1,3 +1,4 @@
+import java.util.Random;
 
 /**
  * This a calculator class
@@ -40,8 +41,14 @@ class Calculator {
     .
     etc
      */
-    int fibonacciNumberFinder(int n){
-        return 0;
+    public int fibonacciNumberFinder(int n) {
+        if (n <= 0) {
+            return 0;
+        } else if (n == 1 || n == 2) {
+            return 1;
+        } else {
+            return fibonacciNumberFinder(n - 1) + fibonacciNumberFinder(n - 2);
+        }
     }
 
 
@@ -52,8 +59,19 @@ class Calculator {
     if int a = 10 then this method returns: 1010
     if int a = 16 then this method returns: 10000
      */
-    String intToBinaryNumber(int number){
-        return null;
+    public String intToBinaryNumber(int number) {
+        if (number == 0) {
+            return "0";
+        }
+
+        StringBuilder binary = new StringBuilder();
+        while (number > 0) {
+            int remainder = number % 2;
+            binary.insert(0, remainder);
+            number /= 2;
+        }
+
+        return binary.toString();
     }
 
     /*
@@ -64,8 +82,19 @@ class Calculator {
 
     if you run this function twice with the same String input, it must return 2 unique String IDs
      */
-    String createUniqueID(String n){
-        return null;
+    public String createUniqueID(String n) {
+        // Create a random string of characters to make the ID unique
+        StringBuilder uniqueChars = new StringBuilder();
+        Random random = new Random();
+        String characters = "abcdefghijklmnopqrstuvwxyz0123456789";
+
+        // Add 5 random characters to the ID
+        for (int i = 0; i < 5; i++) {
+            uniqueChars.append(characters.charAt(random.nextInt(characters.length())));
+        }
+
+        // Combine the original string with the unique characters
+        return n + uniqueChars.toString();
     }
 
 
